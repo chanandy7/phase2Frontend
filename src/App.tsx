@@ -93,38 +93,7 @@ function App() {
         </div>
     );
 
-    // Credit to codingsparkles for providing the color mapping
-    // function getBackColor(poke: Pokemon | undefined | null) {
-    //     let backColor = "#EEE8AA";
-    //     if (poke === undefined || poke === null) {
-    //         return backColor;
-    //     }
-    //     const pokeTypes = poke.types.map((i) => i.type.name);
-    //     if (pokeTypes.includes("fire")) {
-    //         backColor = "#FEC5BB";
-    //     } else if (pokeTypes.includes("grass")) {
-    //         backColor = "#80FFDB";
-    //     } else if (pokeTypes.includes("water")) {
-    //         backColor = "#DFE7FD";
-    //     } else if (pokeTypes.includes("bug")) {
-    //         backColor = "#B0DEA3";
-    //     } else if (pokeTypes.includes("normal")) {
-    //         backColor = "#E0FFFF";
-    //     } else if (pokeTypes.includes("electric")) {
-    //         backColor = "#D8E2DC";
-    //     } else if (pokeTypes.includes("ground")) {
-    //         backColor = "#FAD2E1";
-    //     } else if (pokeTypes.includes("fairy")) {
-    //         backColor = "#FFF1E6";
-    //     } else if (pokeTypes.includes("ghost")) {
-    //         backColor = "#F8EDEB";
-    //     } else if (pokeTypes.includes("fighting")) {
-    //         backColor = "#F1FAEE";
-    //     } else if (pokeTypes.includes("rock")) {
-    //         backColor = "#A8DADC";
-    //     }
-    //     return backColor;
-    // }
+
 
     function search() {
         if (pokemonName === undefined || pokemonName === "") {
@@ -139,9 +108,7 @@ function App() {
                 console.log(res.data[0].quote)
                 setPokemonInfo(res.data[0].quote);
             })
-        // .catch(() => {
-        //     setPokemonInfo(null);
-        // });
+
     }
 
 
