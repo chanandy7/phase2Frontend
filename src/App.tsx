@@ -7,11 +7,11 @@ import "./App.css";
 import { Box, Button, Grid, Paper, Skeleton } from "@mui/material";
 
 function App() {
-    const [pokemonName, setPokemonName] = useState("");
-    const [pokemonInfo, setPokemonInfo] = useState<null | undefined>(
+    const [searchTitle, setSearchTitle] = useState("");
+    const [animeInfo, setAnimeInfo] = useState<null | undefined>(
         undefined
     );
-    const POKEMON_BASE_API_URL = "https://animechan.vercel.app/api/quotes/anime?title=";
+    const API_URL = "https://animechan.vercel.app/api/quotes/anime?title=";
     return (
         <div>
             <div className="search-field">
@@ -20,9 +20,9 @@ function App() {
                     <TextField
                         id="search-bar"
                         className="text"
-                        value={pokemonName}
+                        value={searchTitle}
                         onChange={(prop) => {
-                            setPokemonName(prop.target.value);
+                            setSearchTitle(prop.target.value);
                         }}
                         label="Enter a Title..."
                         variant="outlined"
@@ -40,7 +40,7 @@ function App() {
                 </div>
             </div>
 
-            {pokemonInfo === undefined ? (
+            {animeInfo === undefined ? (
                 <div></div>
             ) : (
                 <div
@@ -62,7 +62,7 @@ function App() {
                         >
                             <Grid item>
                                 <Box>
-                                    {pokemonInfo === undefined || pokemonInfo === null ? (
+                                    {animeInfo === undefined || animeInfo === null ? (
                                         <h1> Anime quote not found</h1>
                                     ) : (
                                         <div>
@@ -71,7 +71,7 @@ function App() {
 
                                             </h1>
                                             <p>
-                                                {pokemonInfo}
+                                                {animeInfo}
                                             </p>
                                         </div>
                                     )}
@@ -79,8 +79,8 @@ function App() {
                             </Grid>
                             <Grid item>
                                 <Box>
-                                    {pokemonInfo ? (
-                                        <div>{"Anime:" + pokemonName} </div>
+                                    {animeInfo ? (
+                                        <div>{"Anime:" + searchTitle} </div>
                                     ) : (
                                         <Skeleton width={300} height={300} />
                                     )}
@@ -96,17 +96,17 @@ function App() {
 
 
     function search() {
-        if (pokemonName === undefined || pokemonName === "") {
+        if (searchTitle === undefined || searchTitle === "") {
             return;
         }
 
 
         axios
-            .get(POKEMON_BASE_API_URL + pokemonName)
+            .get(API_URL + searchTitle)
             .then((res) => {
                 console.log(res.data[0])
                 console.log(res.data[0].quote)
-                setPokemonInfo(res.data[0].quote);
+                setAnimeInfo(res.data[0].quote);
             })
 
     }
